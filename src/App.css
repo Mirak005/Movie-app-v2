@@ -1,38 +1,298 @@
-.App {
+/* Movie Card*/
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+button,
+input:focus {
+  outline: 0;
+}
+::placeholder {
+  opacity: 0.5;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+  background-color: rgba(43, 25, 25, 0.418);
+}
+
+.search-input {
+  width: 60%;
+  height: 50px;
+  border: 1px solid #b6b5b37a;
+  background-color: rgba(252, 252, 252, 0.918);
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  font-size: 20px;
+  padding-left: 10px;
+}
+.button-search {
+  height: 50px;
+  width: 10%;
+  border: 1px solid #b6b5b37a;
+  border-left: none;
+  background-color: white;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  color: rgba(184, 82, 82, 0.836);
+  font-size: 20px;
+  font-weight: 400;
+  cursor: pointer;
+}
+.button-search:hover {
+  background-color: rgba(184, 82, 82, 0.836);
+  color: white;
+  transition: 0.3s;
+}
+
+.rating-search {
+  margin-left: 60px;
+  font-size: 18px;
+  border: 1px solid #b6b5b37a;
+  border-radius: 6px;
+  background-color: white;
+  color: rgba(184, 82, 82, 0.836);
   text-align: center;
+  width: 200px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.rating-star-search {
+  font-size: 30px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.movie-list-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 12% 15%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.movie-card {
+  box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.411);
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  width: 270px;
+  height: 450px;
+  margin:  0 20px;
+  border: 1px solid #b6b5b37a;
+  border-radius: 5px;
+  overflow: hidden;
+  position: relative;
+  background-color: rgba(7, 7, 7, 0.781);
+  color: rgb(255, 255, 255);
+  animation: fadein 0.5s;
 }
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
+@keyframes fadein {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
   }
   to {
+    opacity: 1;
+  }
+}
+.rating-star {
+  font-size: 28px;
+  align-self: flex-end;
+}
+.movieImage {
+  width: 270px;
+  height: 330px;
+  /* border-top: 2px solid  rgba(248, 100, 80, 0.836);
+  border-bottom: 2px solid  rgba(248, 100, 80, 0.836); */
+}
+.movie-card h3,
+.movie-card p {
+  text-align: center;
+  margin: 5px 0;
+  font-size: 20px;
+}
+.card-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.MovieCardButtonsContainer{
+display:flex;
+width: 270px;
+justify-content: center;
+margin-bottom: 10px;
+
+
+}
+.MovieCardButtonsContainer button,.edit-button{
+  cursor: pointer;
+  margin: 5px;
+  padding: 10px 15px;
+  border: 3px solid black;
+  border-radius: 4px;
+  font-size: large;
+  background-color: ghostwhite;
+  transition: 0.3s;
+  width: 120px;
+  
+  }
+  .MovieCardButtonsContainer button:hover {
+    background-color: black;
+    color: ghostwhite;
+  
+    transition: 0.3s;
+    
+  }
+
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  /* height: 450px;
+  width: 300px; */
+  opacity: 0;
+  transition: 0.5s ease;
+}
+.overlay img {
+  height: 100px;
+  width: 100px;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(50%, 50%);
+  margin: 40% 15%;
+}
+.movie-card:hover .overlay {
+  height: 100%;
+  background-color: rgba(90, 118, 212, 0.288);
+  opacity: 0.5;
+}
+
+.noResult {
+  width: 100%;
+ margin: 10% 0 30%;
+  border: solid;
+  border-radius: 5px;
+  animation: fadein 0.5s;
+}
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.noResult h6 {
+  color: rgb(24, 22, 22);
+  background-color: rgba(165, 42, 42, 0.493);
+  padding: 10%;
+  font-size: 50px;
+  text-align: center;
+ 
+}
+
+.addMovie {
+  border: 1px solid rgba(27, 71, 71, 0.253);
+  align-items: center;
+  width: 270px;
+  height: 450px;
+  margin: 10px 20px 20px;
+  border-radius: 8px;
+  background-color: rgba(0, 0, 0, 0.336);
+  box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.411);
+  cursor: pointer;
+}
+.logoAdd:hover {
+  height: 220px;
+  width: 220px;
+  transition: all 0.2s ease-out;
+}
+.logoAdd {
+  height: 180px;
+  width: 180px;
+  transition: all 0.2s ease-out;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-around;
+  height: 500px;
+  width: 500px;
+  padding: 30px;
+}
+.form-title {
+  align-self: center;
+}
+.form-container input {
+  border-radius: 6px;
+  height: 30px;
+  width: 450px;
+  align-self: flex-start;
+  border: 1px solid rgba(29, 80, 138, 0.527);
+}
+.btn-container {
+  align-self: center;
+}
+
+.btn-container button {
+  width: 80px;
+  height: 35px;
+  margin: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: rgba(13, 29, 99, 0.6);
+  font-size: 18px;
+  color: white;
+  cursor: pointer;
+}
+
+/* spinner styling */
+.lds-ring {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+  /*center the spinner*/
+  margin: 20% 45%;
+}
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border: 8px solid #fff;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #fff transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
     transform: rotate(360deg);
   }
 }
