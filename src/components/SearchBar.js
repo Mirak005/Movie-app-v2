@@ -13,17 +13,33 @@ class SearchBar extends React.Component {
     this.setState({ rating: nextValue }, () =>
       this.props.search({
         rating: this.state.rating,
-        search: this.state.search
-      })
-    );
+        search: this.state.search,
+        isLoading:true
+      }),
+      
+    )
+    setTimeout(()=> this.props.search({
+      rating: this.state.rating,
+      search: this.state.search,
+      isLoading:false
+    }),1500)
+    
   };
   handelSearch = e => {
     this.setState({ search: e.target.value }, () =>
       this.props.search({
         rating: this.state.rating,
-        search: this.state.search
-      })
-    );
+        search: this.state.search,
+        isLoading:true
+      }),
+      
+    )
+    setTimeout(()=> this.props.search({
+      rating: this.state.rating,
+      search: this.state.search,
+      isLoading:false
+    }),1500)
+    
   };
 
   render() {
@@ -53,7 +69,8 @@ class SearchBar extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    movieData: state.movieData
+    movieData: state.movieData,
+    isLoading:state.isLoading
   };
 };
 

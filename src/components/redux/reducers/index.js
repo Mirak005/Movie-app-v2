@@ -9,7 +9,8 @@ import { movieData } from "../../data";
 const initState = {
   movieData: movieData,
   search: "",
-  rating: ""
+  rating: "",
+  isLoading:false
 };
 
 const movieReducer = (state = initState, action) => {
@@ -39,7 +40,8 @@ const movieReducer = (state = initState, action) => {
       return {
         ...state,
         search: action.payload.search,
-        rating: action.payload.rating
+        rating: action.payload.rating,
+        isLoading:action.payload.isLoading
       };
 
     default:

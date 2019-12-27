@@ -14,6 +14,7 @@ const customStyles = {
     transform: "translate(-50%, -50%)"
   }
 };
+Modal.setAppElement('#root')
 
 class AddForm extends React.Component {
   state = {

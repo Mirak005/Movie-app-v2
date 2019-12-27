@@ -3,6 +3,7 @@ import Modal from "react-modal";
 import { connect } from "react-redux";
 import { editMovie} from './redux/actions/index'
 
+Modal.setAppElement('#root')
 
 const customStyles = {
   content: {
@@ -103,7 +104,6 @@ class EditForm extends React.Component {
    
     render() {
       return (<div>
-        <button className='edit-button' onClick={this.openModal}>EDIT</button>
         <Modal
       isOpen={this.state.modalIsOpen}
       onRequestClose={this.closeModal}
@@ -130,6 +130,10 @@ class EditForm extends React.Component {
         </div>
       </form>
     </Modal>
+    <button 
+    className="edit-button"
+     onClick={this.openModal}
+     >EDIT</button>
     </div>
       );
     }

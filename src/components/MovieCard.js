@@ -6,7 +6,7 @@ import play from "./play-flat.png";
 function MovieCard({ movie, deleteMovie = () => {} }) {
   return (
     <div className="card-container">
-      <div className="movie-card">
+      <a href="/" className="movie-card">
         <StarRatingComponent
           className="rating-star"
           name="rate1"
@@ -20,10 +20,11 @@ function MovieCard({ movie, deleteMovie = () => {} }) {
         <div className="overlay">
           <img src={play} alt="img" />
         </div>
-      </div>
+      </a>
       <div className="MovieCardButtonsContainer">
         <EditForm movie={movie} />
-        <button onClick={deleteMovie}>DELETE</button>
+        <button className="edit-button" onClick={deleteMovie}>DELETE</button>
+        <button>DESCIPTION</button>
       </div>
     </div>
   );
