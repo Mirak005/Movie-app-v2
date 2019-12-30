@@ -3,6 +3,7 @@ import Modal from "react-modal";
 import add from "./add-logo.png";
 import { connect } from "react-redux";
 import { addMovie } from "./redux/actions/index";
+import StarRatingComponent from "react-star-rating-component";
 
 const customStyles = {
   content: {
@@ -89,9 +90,20 @@ class AddForm extends React.Component {
   render() {
     return (
       <div>
-        <button className="addMovie" onClick={this.openModal}>
+        <div className="card-container">
+         <StarRatingComponent
+          className="rating-star"
+          name="rate1"
+          starCount={5}
+          value={0}
+        />
+        <button className="btn-add" onClick={this.openModal}>
           <img className="logoAdd" src={add} alt="Fail to load" />
         </button>
+        <h3 className="btn-add-label">Add Movie</h3>
+       
+       
+        </div>
         <Modal
           isOpen={this.state.modalIsOpen}
           onRequestClose={this.closeModal}

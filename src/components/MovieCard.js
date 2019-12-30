@@ -1,4 +1,5 @@
 import React from "react";
+import {  Link } from "react-router-dom"
 import EditForm from "./EditForm";
 import StarRatingComponent from "react-star-rating-component";
 import play from "./play-flat.png";
@@ -23,8 +24,9 @@ function MovieCard({ movie, deleteMovie = () => {} }) {
       </a>
       <div className="MovieCardButtonsContainer">
         <EditForm movie={movie} />
-        <button className="edit-button" onClick={deleteMovie}>DELETE</button>
-        <button>DESCIPTION</button>
+        <button  onClick={deleteMovie}>DELETE</button>
+        <Link   to ={`/${movie.id}`}><button>DESCRIPTION</button></Link>
+        
       </div>
     </div>
   );
